@@ -1,22 +1,37 @@
 import React, {useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import Styles from './styles';
 
 function App() {
-  const [nome, setNome] = useState('Matheus');
-  const [idade, setIdade] = useState('20');
-
-  function entrar(name, idade) {
-    setIdade(idade);
-    setNome(name);
-  }
+  const [img, setImg] = useState(require('./src/biscoito.png'));
 
   return (
-    <View>
-      <Button title="mudar nome" onPress={() => entrar('lucas', 12)} />
-      <Text>
-        {nome}
-        {idade}
-      </Text>
+    <View style={Styles.container}>
+      <Image source={img} style={Styles.img} />
+
+      <Text style={Styles.textoFrase}>Teste de frase</Text>
+
+      <TouchableOpacity style={Styles.botao}>
+        <View style={Styles.btnArea}>
+          <Text style={Styles.btnTexto}>Quebrar Biscoito</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[Styles.botao, {marginTop: 15, borderColor: '#121212'}]}>
+        <View style={Styles.btnArea}>
+          <Text style={[Styles.btnTexto, {color: '#121212'}]}>
+            Reiniciar Biscoito
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
